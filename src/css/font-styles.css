@@ -1,13 +1,13 @@
 /* font styles */
 
-.title {
+.title-font {
   font-family: Ubuntu;
   font-style: normal;
   font-weight: bold;
   color: var(--base-weak);
 }
 
-.h1 {
+.h1-font {
   font-family: Ubuntu;
   font-size: 32px;
   line-height: 32px;
@@ -15,7 +15,7 @@
   color: var(--base-strong);
 }
 
-.h2 {
+.h2-font {
   font-family: Ubuntu;
   font-size: 24px;
   line-height: 32px;
@@ -23,14 +23,14 @@
   color: var(--base-strong);
 }
 
-.body-bold {
+.body-bold-font {
   font-family: Ubuntu;
   font-size: 16px;
   line-height: 24px;
   font-weight: bold;
 }
 
-.body {
+.body-font {
   font-family: Ubuntu;
   font-size: 16px;
   line-height: 24px;
