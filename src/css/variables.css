@@ -1,0 +1,11 @@
+:root {
+  --accent: #373af5;
+  --secondary: #8083a4;
+  --secondary-60: rgba(128, 131, 164, 0.6);
+  --secondary-40: rgba(128, 131, 164, 0.4);
+  --secondary-20: rgba(128, 131, 164, 0.2);
+  --secondary-06: rgba(128, 131, 164, 0.06);
+  --base-strong: #2c2d76;
+  --critic: #e5596d;
+  --base-weak: #ffffff;
+}
