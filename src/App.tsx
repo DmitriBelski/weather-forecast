@@ -18,7 +18,7 @@ export interface ISelectItem {
   item: any;
 }
 
-interface IForecast {
+export interface IForecast {
   day: number;
   month: number;
   year: number;
@@ -62,15 +62,14 @@ function App(): JSX.Element {
 
   useEffect(() => {
     const city = cities.find((item) => item.name === dailyCity);
-    console.log(city);
     if (city) {
       fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${city.lat}&lon=${city.lon}&units=metric&exclude=alerts,current,minutely,hourly&appid=${key}`)
         .then((response) => response.json())
-        // .then((json) => setRawDailyForecast(json));
-        .then((json) => console.log(json));
+        .then((json) => setRawDailyForecast(json));
+      // .then((json) => console.log(json));
     }
   }, [cities, dailyCity]);
-  // i = i + 1
+
   useEffect(() => {
     if (rawDailyForecast.daily) {
       const result = [] as IForecast[];
@@ -100,8 +99,7 @@ function App(): JSX.Element {
           <div style={{ marginBottom: '54px' }}>
             <Select initValue="Select city" items={cityNames} setter={setDailyCity} />
           </div>
-          {/* <Placeholder /> */}
-          <Slider />
+          { dailyForecast.length ? <Slider data={dailyForecast} count={3} /> : <Placeholder /> }
           <input className="input-range" type="range" />
         </div>
 
@@ -114,7 +112,7 @@ function App(): JSX.Element {
             <Selectdate />
           </div>
           <Placeholder />
-          <Card />
+          {/* <Card /> */}
         </div>
 
       </main>
