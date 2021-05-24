@@ -4,6 +4,7 @@ import Placeholder from './components/placeholder/Placeholder';
 import Card from './components/card/Card';
 import Slider from './components/slider/Slider';
 import Scrollpicker from './components/scrollpicker/Scrollpicker';
+import Select from './components/select/Select';
 
 function App(): JSX.Element {
   return (
@@ -16,16 +17,7 @@ function App(): JSX.Element {
           <h1 className="h1-font" style={{ marginBottom: '32px' }}>7 Days Forecast</h1>
           <div style={{ marginBottom: '54px' }}>
 
-            <div className="select">
-              <div className="select__input body select__input--open">
-                <span className="body-font">Select City</span>
-                <img className="select__bottomarrow" alt="" />
-              </div>
-
-              <div className="select__dropdown select__dropdown--open">
-                <Scrollpicker />
-              </div>
-            </div>
+            <Select />
           </div>
 
           {/* <Placeholder /> */}
@@ -40,16 +32,7 @@ function App(): JSX.Element {
           </h1>
           <div className="selectwrapper">
 
-            <div className="select">
-              <div className="select__input body select__input--open">
-                <span className="body-font">Select City</span>
-                <img className="select__bottomarrow" alt="" />
-              </div>
-
-              <div className="select__dropdown select__dropdown--open">
-                <Scrollpicker />
-              </div>
-            </div>
+            <Select />
 
             <div className="selectdate">
               <div className="selectdate__input body selectdate__input--open">
