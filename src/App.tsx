@@ -1,5 +1,5 @@
 import React from 'react';
-// import placeholder from './images/placeholder/Academy-Weather-bg160.svg';
+import placeholder from './images/placeholder/Academy-Weather-bg160.svg';
 import leftArrow from './images/icons/24/chevron-left.svg';
 import rightArrow from './images/icons/24/chevron-right.svg';
 import weather from './images/weather-icons/13d.png';
@@ -14,7 +14,7 @@ function App(): JSX.Element {
       </div>
 
       <main>
-        <div className="container">
+        <div className="container container-top">
           <h1 className="h1-font" style={{ marginBottom: '32px' }}>7 Days Forecast</h1>
           <div style={{ marginBottom: '54px' }}>
 
@@ -24,7 +24,7 @@ function App(): JSX.Element {
                 <img className="select__bottomarrow" alt="" />
               </div>
 
-              <div className="select__dropdown select__dropdown--open">
+              {/* <div className="select__dropdown select__dropdown--open">
                 <div className="scrollpicker__wrapper">
                   <ul className="scrollpicker__list">
                     <li className="scrollpicker__item body-font unselectable">Самара</li>
@@ -34,9 +34,8 @@ function App(): JSX.Element {
                     <li className="scrollpicker__item body-font unselectable">Краснодар</li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
             </div>
-
           </div>
 
           {/* <div className="placeholder">
@@ -50,29 +49,30 @@ function App(): JSX.Element {
             <img className="slider__left-arrow" src={leftArrow} alt="left arrow" />
             <img className="slider__right-arrow" src={rightArrow} alt="right arrow" />
 
-            <div className="card">
+            <div className="card" style={{ width: '174px' }}>
               <span className="card__date body-bold-font">27 sep 2021</span>
               <img className="card__img" src={weather} alt="storm" />
               <span className="card__tepmerature h1-font">+17°</span>
             </div>
-            <div className="card">
+            <div className="card" style={{ width: '174px' }}>
               <span className="card__date body-bold-font">27 sep 2021</span>
               <img className="card__img" src={weather} alt="storm" />
               <span className="card__tepmerature h1-font">+17°</span>
             </div>
-            <div className="card">
+            <div className="card" style={{ width: '174px' }}>
               <span className="card__date body-bold-font">27 sep 2021</span>
               <img className="card__img" src={weather} alt="storm" />
               <span className="card__tepmerature h1-font">+17°</span>
             </div>
           </div>
+          <input className="input-range" type="range" />
         </div>
 
         <div className="container">
           <h1 className="h1-font" style={{ marginBottom: '32px' }}>
             Forecast for a Date in the Past
           </h1>
-          <div style={{ marginBottom: '54px', display: 'flex', justifyContent: 'space-between' }}>
+          <div className="selectwrapper">
 
             <div className="select">
               <div className="select__input body select__input--open">
@@ -80,7 +80,7 @@ function App(): JSX.Element {
                 <img className="select__bottomarrow" alt="" />
               </div>
 
-              <div className="select__dropdown select__dropdown--open">
+              {/* <div className="select__dropdown select__dropdown--open">
                 <div className="scrollpicker__wrapper">
                   <ul className="scrollpicker__list">
                     <li className="scrollpicker__item body-font unselectable">Самара</li>
@@ -90,7 +90,7 @@ function App(): JSX.Element {
                     <li className="scrollpicker__item body-font unselectable">Краснодар</li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="selectdate">
@@ -99,7 +99,7 @@ function App(): JSX.Element {
                 <div className="selectdate__calendar selectdate__calendar--open" />
               </div>
 
-              <div className="selectdate__dropdown selectdate__dropdown--open">
+              {/* <div className="selectdate__dropdown selectdate__dropdown--open">
                 <div className="scrollpicker__wrapper">
                   <ul className="scrollpicker__list">
                     <li className="scrollpicker__item body-font unselectable">11</li>
@@ -130,18 +130,25 @@ function App(): JSX.Element {
                     <li className="scrollpicker__item body-font unselectable">2021</li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
-          <div className="card" style={{ flex: '1 0 0' }}>
+          <div className="placeholder">
+            <img className="placeholder__img" src={placeholder} alt="Fill in all the fields" />
+            <span className="placeholder__text body-bold-font">
+              Fill in all the fields and the weather will be displayed
+            </span>
+          </div>
+
+          {/* <div className="card" style={{ minWidth: '252px' }}>
             <span className="card__date body-bold-font">27 sep 2021</span>
             <img className="card__img" style={{ width: '160px', height: '160px', margin: '-9px 0' }} src={weather} alt="storm" />
             <span className="card__tepmerature h1-font">+17°</span>
-          </div>
+          </div> */}
         </div>
       </main>
-      <footer className="meta">C ЛЮБОВЬЮ ОТ MERCURY DEVELOPMENT</footer>
+      <footer className="meta-font">C ЛЮБОВЬЮ ОТ MERCURY DEVELOPMENT</footer>
     </div>
   );
 }
