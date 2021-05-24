@@ -1,9 +1,8 @@
 import React from 'react';
-import leftArrow from './images/icons/24/chevron-left.svg';
-import rightArrow from './images/icons/24/chevron-right.svg';
 import Title from './components/title/Title';
 import Placeholder from './components/placeholder/Placeholder';
 import Card from './components/card/Card';
+import Slider from './components/slider/Slider';
 
 function App(): JSX.Element {
   return (
@@ -38,13 +37,7 @@ function App(): JSX.Element {
 
           {/* <Placeholder /> */}
 
-          <div className="slider">
-            <img className="slider__left-arrow" src={leftArrow} alt="left arrow" />
-            <img className="slider__right-arrow" src={rightArrow} alt="right arrow" />
-            <Card />
-            <Card />
-            <Card />
-          </div>
+          <Slider />
           <input className="input-range" type="range" />
         </div>
 
@@ -115,7 +108,6 @@ function App(): JSX.Element {
           </div>
 
           <Placeholder />
-
           <Card />
         </div>
       </main>

@@ -6,6 +6,7 @@
 @import url('../components/title/title.css');
 @import url('../components/placeholder/placeholder.css');
 @import url('../components/card/card.css');
+@import url('../components/slider/slider.css');
 
 body {
   background: url(../images/background/Up-1440.svg) top no-repeat,
@@ -197,27 +198,6 @@ footer {
   user-select: none;
 }
 
-.slider {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.slider :not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
-  margin-left: 10px;
-}
-
-.slider__left-arrow {
-  position: absolute;
-  left: -34px;
-}
-
-.slider__right-arrow {
-  position: absolute;
-  right: -34px;
-}
-
 .selectdate {
   width: 252px;
   position: relative;
@@ -317,11 +297,6 @@ footer {
   .selectwrapper {
     flex-wrap: wrap;
     margin-bottom: calc(7.5vw - 24px);
-  }
-
-  .slider {
-    position: absolute;
-    bottom: calc(2.2vw + 53px);
   }
 
   .slider__left-arrow {

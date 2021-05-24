@@ -1,0 +1,27 @@
+.slider {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slider :not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
+  margin-left: 10px;
+}
+
+.slider__left-arrow {
+  position: absolute;
+  left: -34px;
+}
+
+.slider__right-arrow {
+  position: absolute;
+  right: -34px;
+}
+
+@media (max-width: 768px) {
+  .slider {
+    position: absolute;
+    bottom: calc(2.2vw + 53px);
+  }
+}
