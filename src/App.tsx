@@ -1,9 +1,9 @@
 import React from 'react';
-import placeholder from './images/placeholder/Academy-Weather-bg160.svg';
 import leftArrow from './images/icons/24/chevron-left.svg';
 import rightArrow from './images/icons/24/chevron-right.svg';
 import weather from './images/weather-icons/13d.png';
 import Title from './components/title/Title';
+import Placeholder from './components/placeholder/Placeholder';
 
 function App(): JSX.Element {
   return (
@@ -36,12 +36,7 @@ function App(): JSX.Element {
             </div>
           </div>
 
-          {/* <div className="placeholder">
-            <img className="placeholder__img" src={placeholder} alt="Fill in all the fields" />
-            <span className="placeholder__text body-bold-font">
-              Fill in all the fields and the weather will be displayed
-            </span>
-          </div> */}
+          {/* <Placeholder /> */}
 
           <div className="slider">
             <img className="slider__left-arrow" src={leftArrow} alt="left arrow" />
@@ -132,12 +127,7 @@ function App(): JSX.Element {
             </div>
           </div>
 
-          <div className="placeholder">
-            <img className="placeholder__img" src={placeholder} alt="Fill in all the fields" />
-            <span className="placeholder__text body-bold-font">
-              Fill in all the fields and the weather will be displayed
-            </span>
-          </div>
+          <Placeholder />
 
           {/* <div className="card" style={{ minWidth: '252px' }}>
             <span className="card__date body-bold-font">27 sep 2021</span>
