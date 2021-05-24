@@ -27,22 +27,35 @@
   border: 2px solid var(--secondary);
 }
 
-.select__input span {
+.select__value {
   flex: 0 0 auto;
   color: var(--secondary);
 }
 
-.select__bottomarrow {
+.select__arrow {
+  position: relative;
   height: 20px;
   flex: 0 0 20px;
+  background: transparent;
+}
+
+.select__bottomarrow {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 20px;
+  width: 20px;
   background-color: var(--secondary);
   -webkit-mask: url(/src/images/icons/16/chevron-bottom.svg) no-repeat center;
   mask: url(/src/images/icons/16/chevron-bottom.svg) no-repeat center;
 }
 
 .select__toparrow {
+  position: absolute;
+  top: 0px;
+  left: 0px;
   height: 20px;
-  flex: 0 0 20px;
+  width: 20px;
   background-color: var(--secondary);
   -webkit-mask: url(/src/images/icons/16/chevron-top.svg) no-repeat center;
   mask: url(/src/images/icons/16/chevron-top.svg) no-repeat center;
