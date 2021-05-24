@@ -3,6 +3,7 @@ import Title from './components/title/Title';
 import Placeholder from './components/placeholder/Placeholder';
 import Card from './components/card/Card';
 import Slider from './components/slider/Slider';
+import Scrollpicker from './components/scrollpicker/Scrollpicker';
 
 function App(): JSX.Element {
   return (
@@ -21,17 +22,9 @@ function App(): JSX.Element {
                 <img className="select__bottomarrow" alt="" />
               </div>
 
-              {/* <div className="select__dropdown select__dropdown--open">
-                <div className="scrollpicker__wrapper">
-                  <ul className="scrollpicker__list">
-                    <li className="scrollpicker__item body-font unselectable">Самара</li>
-                    <li className="scrollpicker__item body-font unselectable">Тольятти</li>
-                    <li className="scrollpicker__item body-font unselectable">Саратов</li>
-                    <li className="scrollpicker__item body-font unselectable">Казань</li>
-                    <li className="scrollpicker__item body-font unselectable">Краснодар</li>
-                  </ul>
-                </div>
-              </div> */}
+              <div className="select__dropdown select__dropdown--open">
+                <Scrollpicker />
+              </div>
             </div>
           </div>
 
@@ -53,17 +46,9 @@ function App(): JSX.Element {
                 <img className="select__bottomarrow" alt="" />
               </div>
 
-              {/* <div className="select__dropdown select__dropdown--open">
-                <div className="scrollpicker__wrapper">
-                  <ul className="scrollpicker__list">
-                    <li className="scrollpicker__item body-font unselectable">Самара</li>
-                    <li className="scrollpicker__item body-font unselectable">Тольятти</li>
-                    <li className="scrollpicker__item body-font unselectable">Саратов</li>
-                    <li className="scrollpicker__item body-font unselectable">Казань</li>
-                    <li className="scrollpicker__item body-font unselectable">Краснодар</li>
-                  </ul>
-                </div>
-              </div> */}
+              <div className="select__dropdown select__dropdown--open">
+                <Scrollpicker />
+              </div>
             </div>
 
             <div className="selectdate">
@@ -72,38 +57,11 @@ function App(): JSX.Element {
                 <div className="selectdate__calendar selectdate__calendar--open" />
               </div>
 
-              {/* <div className="selectdate__dropdown selectdate__dropdown--open">
-                <div className="scrollpicker__wrapper">
-                  <ul className="scrollpicker__list">
-                    <li className="scrollpicker__item body-font unselectable">11</li>
-                    <li className="scrollpicker__item body-font unselectable">12</li>
-                    <li className="scrollpicker__item body-font unselectable">13</li>
-                    <li className="scrollpicker__item body-font unselectable">14</li>
-                    <li className="scrollpicker__item body-font unselectable">15</li>
-                    <li className="scrollpicker__item body-font unselectable">16</li>
-                  </ul>
-                </div>
-                <div className="scrollpicker__wrapper">
-                  <ul className="scrollpicker__list">
-                    <li className="scrollpicker__item body-font unselectable">Jan</li>
-                    <li className="scrollpicker__item body-font unselectable">Feb</li>
-                    <li className="scrollpicker__item body-font unselectable">Mar</li>
-                    <li className="scrollpicker__item body-font unselectable">Apr</li>
-                    <li className="scrollpicker__item body-font unselectable">May</li>
-                    <li className="scrollpicker__item body-font unselectable">Jun</li>
-                  </ul>
-                </div>
-                <div className="scrollpicker__wrapper">
-                  <ul className="scrollpicker__list">
-                    <li className="scrollpicker__item body-font unselectable">2021</li>
-                    <li className="scrollpicker__item body-font unselectable">2021</li>
-                    <li className="scrollpicker__item body-font unselectable">2021</li>
-                    <li className="scrollpicker__item body-font unselectable">2021</li>
-                    <li className="scrollpicker__item body-font unselectable">2021</li>
-                    <li className="scrollpicker__item body-font unselectable">2021</li>
-                  </ul>
-                </div>
-              </div> */}
+              <div className="selectdate__dropdown selectdate__dropdown--open">
+                <Scrollpicker />
+                <Scrollpicker />
+                <Scrollpicker />
+              </div>
             </div>
           </div>
 
