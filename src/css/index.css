@@ -2,6 +2,8 @@
 @import url('./fonts.css');
 @import url('./variables.css');
 @import url('./font-styles.css');
+/* стили компонентов */
+@import url('../components/title/title.css');
 
 body {
   background: url(../images/background/Up-1440.svg) top no-repeat,
@@ -32,24 +34,6 @@ footer {
   padding-bottom: 16px;
   color: var(--base-weak);
   opacity: 0.6;
-}
-
-.title {
-  display: flex;
-  flex-direction: column;
-  width: 775px;
-  margin: 0 auto;
-  padding: 40px 0;
-  font-size: 102px;
-  line-height: 94px;
-}
-
-.title__top {
-  text-align: left;
-}
-
-.title__bottom {
-  text-align: right;
 }
 
 .container {
@@ -347,27 +331,11 @@ footer {
   display: flex;
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
-  .title {
-    width: 75.6vw;
-    padding: 3.9vw 0;
-    font-size: 9.96vw;
-    line-height: 92%;
-  }
-}
-
 @media (max-width: 768px) {
   body {
     background: url(../images/background/Up-mobile.svg) right top no-repeat,
       url(../images/background/Down-mobile.svg) left bottom no-repeat;
     background-color: var(--accent);
-  }
-
-  .title {
-    width: 75.6vw;
-    padding: 7.5vw 0;
-    font-size: 9.96vw;
-    line-height: 100%;
   }
 
   .container {

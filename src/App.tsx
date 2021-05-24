@@ -3,15 +3,13 @@ import placeholder from './images/placeholder/Academy-Weather-bg160.svg';
 import leftArrow from './images/icons/24/chevron-left.svg';
 import rightArrow from './images/icons/24/chevron-right.svg';
 import weather from './images/weather-icons/13d.png';
+import Title from './components/title/Title';
 
 function App(): JSX.Element {
   return (
     <div className="wrapper">
 
-      <div className="title">
-        <div className="title__top title-font">Weather</div>
-        <div className="title__bottom title-font">forecast</div>
-      </div>
+      <Title />
 
       <main>
         <div className="container container-top">

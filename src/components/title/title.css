@@ -1,0 +1,35 @@
+.title {
+  display: flex;
+  flex-direction: column;
+  width: 775px;
+  margin: 0 auto;
+  padding: 40px 0;
+  font-size: 102px;
+  line-height: 94px;
+}
+
+.title__top {
+  text-align: left;
+}
+
+.title__bottom {
+  text-align: right;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .title {
+    width: 75.6vw;
+    padding: 3.9vw 0;
+    font-size: 9.96vw;
+    line-height: 92%;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    width: 75.6vw;
+    padding: 7.5vw 0;
+    font-size: 9.96vw;
+    line-height: 100%;
+  }
+}
