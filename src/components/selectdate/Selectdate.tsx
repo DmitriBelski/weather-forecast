@@ -10,9 +10,9 @@ function Selectdate(): JSX.Element {
       </div>
 
       <div className="selectdate__dropdown selectdate__dropdown--open">
+        {/* <Scrollpicker />
         <Scrollpicker />
-        <Scrollpicker />
-        <Scrollpicker />
+        <Scrollpicker /> */}
       </div>
     </div>
   );

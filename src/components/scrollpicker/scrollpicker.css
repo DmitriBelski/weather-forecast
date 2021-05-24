@@ -30,9 +30,16 @@
   list-style: none;
 }
 
+.scrollpicker__itemwrapper {
+  display: flex;
+}
+
 .scrollpicker__item {
+  flex: 1 0 0;
+  text-align: left;
   height: 36px;
   padding: 6px 10px;
+  background-color: var(--base-weak);
   color: var(--base-strong);
   border-radius: 8px;
 }

@@ -1,14 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { ISelectItem } from '../../App';
 
-function Scrollpicker(): JSX.Element {
+type ScrollpickerProps = {
+  getItems?(): ISelectItem[]
+  itemsArr?: ISelectItem[]
+  setter(value: any): void
+}
+
+Scrollpicker.defaultProps = {
+  getItems: () => null,
+  itemsArr: [],
+};
+
+function Scrollpicker({ getItems, itemsArr, setter }: ScrollpickerProps): JSX.Element {
+  const [items, setItems] = useState<ISelectItem[]>([]);
+
+  useEffect(() => {
+    if (getItems) {
+      const newItems = getItems();
+      setItems(newItems);
+    }
+  }, [getItems]);
+
+  useEffect(() => {
+    if (itemsArr) {
+      setItems(itemsArr);
+    }
+  }, [itemsArr]);
+
   return (
     <div className="scrollpicker__wrapper">
       <ul className="scrollpicker__list">
-        <li className="scrollpicker__item body-font unselectable">Самара</li>
-        <li className="scrollpicker__item body-font unselectable">Тольятти</li>
-        <li className="scrollpicker__item body-font unselectable">Саратов</li>
-        <li className="scrollpicker__item body-font unselectable">Казань</li>
-        <li className="scrollpicker__item body-font unselectable">Краснодар</li>
+        {items.map((item: ISelectItem) => (
+          <li className="scrollpicker__itemwrapper" key={item.id}>
+            <button className="scrollpicker__item body-font unselectable" onClick={() => setter(item.item)} type="button">
+              {item.item}
+            </button>
+          </li>
+        ))}
       </ul>
     </div>
   );

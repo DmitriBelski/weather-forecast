@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { ISelectItem } from '../../App';
 import Scrollpicker from '../scrollpicker/Scrollpicker';
 
 type SelectProps = {
   initValue: string,
-  items: string[],
-  setter(city: string): void
+  items: ISelectItem[],
+  setter(value: any): void
 }
 
 function Select({ initValue, items, setter }: SelectProps): JSX.Element {
@@ -45,7 +46,7 @@ function Select({ initValue, items, setter }: SelectProps): JSX.Element {
       </div>
 
       <div className={`select__dropdown ${opened ? 'select__dropdown--open' : ''}`}>
-        <Scrollpicker />
+        <Scrollpicker itemsArr={items} setter={setValue} />
       </div>
     </div>
   );
