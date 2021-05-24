@@ -24,4 +24,12 @@
     position: absolute;
     bottom: calc(2.2vw + 53px);
   }
+
+  .slider__left-arrow {
+    display: none;
+  }
+
+  .slider__right-arrow {
+    display: none;
+  }
 }
