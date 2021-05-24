@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ISelectItem } from '../../App';
+import { Condition } from '../../functions';
 import Scrollpicker from '../scrollpicker/Scrollpicker';
 
 type SelectProps = {
@@ -15,30 +16,28 @@ function Select({ initValue, items, setter }: SelectProps): JSX.Element {
 
   useEffect(() => {
     setValue(initValue);
-  }, [initValue]);
+  }, []);
 
   useEffect(() => {
     if (value !== initValue) {
-      setOpened((prev) => !prev);
+      setOpened(false);
+      setHovered(false);
       setter(value);
     }
-  }, [initValue, value, setter]);
+  }, [value]);
 
   function HoverHandler() {
     return setHovered((prev) => !prev);
   }
 
   function OpenHandler() {
+    setHovered(true);
     return setOpened((prev) => !prev);
   }
 
-  function Condition(condition, then, otherwise) {
-    return condition ? then : otherwise;
-  }
-
   return (
-    <div className="select" onMouseOver={HoverHandler} onMouseOut={HoverHandler} onFocus={HoverHandler} onBlur={HoverHandler}>
-      <div className={`select__input body ${Condition(opened, 'select__input--open', Condition(hovered, 'select__input--hover', ''))}`}>
+    <div className="select">
+      <div className={`select__input body ${Condition(opened, 'select__input--open', Condition(hovered, 'select__input--hover', ''))}`} onMouseOver={HoverHandler} onMouseOut={HoverHandler} onFocus={HoverHandler} onBlur={HoverHandler}>
         <span className="select__value body-font">{value}</span>
         <button className="select__arrow" type="button" onClick={OpenHandler} onKeyDown={OpenHandler}>
           <span role="navigation" className={`${opened ? 'select__toparrow' : 'select__bottomarrow'}`} />

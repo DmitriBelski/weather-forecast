@@ -1,5 +1,5 @@
 .scrollpicker__wrapper {
-  flex: 0 0 auto;
+  flex: 1 0 auto;
   max-height: inherit;
   padding: 6px 2px 6px 6px;
   background: var(--base-weak);
@@ -9,15 +9,21 @@
   overflow-y: auto;
 }
 
+.scrollpicker__wrapper:not(:nth-child(1)) {
+  margin-left: 5px;
+}
+
 /* для Chrome/Edge/Safari */
 .scrollpicker__wrapper::-webkit-scrollbar {
   height: 12px;
   width: 12px;
 }
+
 .scrollpicker__wrapper::-webkit-scrollbar-track {
   background: var(--base-weak);
   border-radius: 8px;
 }
+
 .scrollpicker__wrapper::-webkit-scrollbar-thumb {
   background-color: var(--secondary-40);
   border-radius: 8px;

@@ -9,20 +9,22 @@ type SliderProps = {
   count: number
 }
 
-function Slider({ data, count }:SliderProps): JSX.Element {
+function Slider({ data, count }: SliderProps): JSX.Element {
   const [firstCardNumber, setfirstCardNumber] = useState<number>(0);
+
   function increment() {
     if (firstCardNumber > 0) {
       setfirstCardNumber((prev) => prev - 1);
     }
   }
+
   function decrement() {
     if (firstCardNumber < 4) {
       setfirstCardNumber((prev) => prev + 1);
     }
   }
-  const generateItemsFromCount = useCallback(() => new Array(count).fill('').map((_, i: number) => firstCardNumber + i),
-    [count, firstCardNumber]);
+
+  const generateItemsFromCount = useCallback(() => new Array(count).fill('').map((_, i: number) => firstCardNumber + i), [firstCardNumber]);
 
   return (
     <div className="slider">
@@ -32,7 +34,7 @@ function Slider({ data, count }:SliderProps): JSX.Element {
       <button onClick={() => decrement()} type="button">
         <img className="slider__right-arrow" src={rightArrow} alt="right arrow" />
       </button>
-      {generateItemsFromCount().map((n: number) => <Card size="small" data={data[n]} />)}
+      {generateItemsFromCount().map((n: number) => <Card size="small" data={data[n]} key={n} />)}
     </div>
   );
 }
