@@ -18,11 +18,22 @@ export interface ISelectItem {
   item: any;
 }
 
+interface IForecast {
+  day: number;
+  month: number;
+  year: number;
+  temp: number;
+  icon: string;
+}
+
 function App(): JSX.Element {
-  // const key = '40e04da9c5aabaa94f2c9c89aeeb4578';
+  const key = '40e04da9c5aabaa94f2c9c89aeeb4578';
 
   const [cityNames, setCityNames] = useState<ISelectItem[]>([]);
   const [dailyCity, setDailyCity] = useState<string>('');
+  const [rawDailyForecast, setRawDailyForecast] = useState<any>({});
+
+  const [dailyForecast, setDailyForecast] = useState<IForecast[]>([]);
 
   const cities = useMemo<ICity[]>(() => [
     {
@@ -50,15 +61,34 @@ function App(): JSX.Element {
   }, [cities]);
 
   useEffect(() => {
-    console.log(`dailyCity - ${dailyCity}`);
-    // const city = cities.find(item => item.name === dailyCity)
-    // if (city) {
-    //   fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${city?.lat}&lon=${city?.lon}&units=metric&exclude=alerts,current,minutely,hourly&appid=${key}`)
-    //     .then(response => response.json())
-    //     .then(json => setRawDailyForecast(json))
-    //     // .then(json =>  console.log(json))
-    // }
-  }, [dailyCity]);
+    const city = cities.find((item) => item.name === dailyCity);
+    console.log(city);
+    if (city) {
+      fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${city.lat}&lon=${city.lon}&units=metric&exclude=alerts,current,minutely,hourly&appid=${key}`)
+        .then((response) => response.json())
+        // .then((json) => setRawDailyForecast(json));
+        .then((json) => console.log(json));
+    }
+  }, [cities, dailyCity]);
+  // i = i + 1
+  useEffect(() => {
+    if (rawDailyForecast.daily) {
+      const result = [] as IForecast[];
+      for (let i = 1; i <= 7; i += 1) {
+        const unixTimestamp = rawDailyForecast.daily[i].dt;
+        const date = new Date(unixTimestamp * 1000);
+        const day = date.getUTCDate();
+        const month = date.getUTCMonth() + 1;
+        const year = date.getUTCFullYear();
+        const temp = rawDailyForecast.daily[i].temp.day;
+        const { icon } = rawDailyForecast.daily[i].weather[0];
+        result.push({
+          day, month, year, temp, icon,
+        });
+      }
+      setDailyForecast(result);
+    }
+  }, [rawDailyForecast]);
 
   return (
     <div className="wrapper">
