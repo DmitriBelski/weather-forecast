@@ -1,0 +1,33 @@
+.card {
+  flex: 0 0 174px;
+  height: 238px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--accent);
+  box-shadow: 0px 4px 4px rgba(4, 5, 73, 0.25), 14px 14px 20px rgba(5, 6, 114, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.card__date {
+  color: var(--base-weak);
+  align-self: flex-start;
+}
+
+.card__img {
+  width: 120px;
+  height: 120px;
+  margin: auto 0;
+  align-self: center;
+}
+
+.card__tepmerature {
+  color: var(--base-weak);
+  align-self: flex-end;
+}
+
+@media (max-width: 768px) {
+  .card {
+    border: 2px solid var(--base-strong);
+  }
+}

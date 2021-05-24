@@ -1,9 +1,9 @@
 import React from 'react';
 import leftArrow from './images/icons/24/chevron-left.svg';
 import rightArrow from './images/icons/24/chevron-right.svg';
-import weather from './images/weather-icons/13d.png';
 import Title from './components/title/Title';
 import Placeholder from './components/placeholder/Placeholder';
+import Card from './components/card/Card';
 
 function App(): JSX.Element {
   return (
@@ -41,22 +41,9 @@ function App(): JSX.Element {
           <div className="slider">
             <img className="slider__left-arrow" src={leftArrow} alt="left arrow" />
             <img className="slider__right-arrow" src={rightArrow} alt="right arrow" />
-
-            <div className="card" style={{ width: '174px' }}>
-              <span className="card__date body-bold-font">27 sep 2021</span>
-              <img className="card__img" src={weather} alt="storm" />
-              <span className="card__tepmerature h1-font">+17°</span>
-            </div>
-            <div className="card" style={{ width: '174px' }}>
-              <span className="card__date body-bold-font">27 sep 2021</span>
-              <img className="card__img" src={weather} alt="storm" />
-              <span className="card__tepmerature h1-font">+17°</span>
-            </div>
-            <div className="card" style={{ width: '174px' }}>
-              <span className="card__date body-bold-font">27 sep 2021</span>
-              <img className="card__img" src={weather} alt="storm" />
-              <span className="card__tepmerature h1-font">+17°</span>
-            </div>
+            <Card />
+            <Card />
+            <Card />
           </div>
           <input className="input-range" type="range" />
         </div>
@@ -129,11 +116,7 @@ function App(): JSX.Element {
 
           <Placeholder />
 
-          {/* <div className="card" style={{ minWidth: '252px' }}>
-            <span className="card__date body-bold-font">27 sep 2021</span>
-            <img className="card__img" style={{ width: '160px', height: '160px', margin: '-9px 0' }} src={weather} alt="storm" />
-            <span className="card__tepmerature h1-font">+17°</span>
-          </div> */}
+          <Card />
         </div>
       </main>
       <footer className="meta-font">C ЛЮБОВЬЮ ОТ MERCURY DEVELOPMENT</footer>
