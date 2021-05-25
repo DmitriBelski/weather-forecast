@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/weather-forecast/static/css/main.93d32b01.chunk.css",
+    "main.js": "/weather-forecast/static/js/main.4f908e0f.chunk.js",
+    "main.js.map": "/weather-forecast/static/js/main.4f908e0f.chunk.js.map",
+    "runtime-main.js": "/weather-forecast/static/js/runtime-main.d9c78a37.js",
+    "runtime-main.js.map": "/weather-forecast/static/js/runtime-main.d9c78a37.js.map",
+    "static/js/2.5fe0b2d1.chunk.js": "/weather-forecast/static/js/2.5fe0b2d1.chunk.js",
+    "static/js/2.5fe0b2d1.chunk.js.map": "/weather-forecast/static/js/2.5fe0b2d1.chunk.js.map",
+    "index.html": "/weather-forecast/index.html",
+    "static/css/main.93d32b01.chunk.css.map": "/weather-forecast/static/css/main.93d32b01.chunk.css.map",
+    "static/js/2.5fe0b2d1.chunk.js.LICENSE.txt": "/weather-forecast/static/js/2.5fe0b2d1.chunk.js.LICENSE.txt",
+    "static/media/Academy-Weather-bg160.1a743710.svg": "/weather-forecast/static/media/Academy-Weather-bg160.1a743710.svg",
+    "static/media/index.css": "/weather-forecast/static/media/chevron-top.01db9ee1.svg",
+    "static/media/chevron-left.668da982.svg": "/weather-forecast/static/media/chevron-left.668da982.svg",
+    "static/media/chevron-right.d8b7c444.svg": "/weather-forecast/static/media/chevron-right.d8b7c444.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d9c78a37.js",
+    "static/js/2.5fe0b2d1.chunk.js",
+    "static/css/main.93d32b01.chunk.css",
+    "static/js/main.4f908e0f.chunk.js"
+  ]
+}
