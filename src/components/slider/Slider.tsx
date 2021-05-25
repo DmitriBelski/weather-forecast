@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import CSS from 'csstype';
 import Card from '../card/Card';
 import leftArrow from '../../images/icons/24/chevron-left.svg';
 import rightArrow from '../../images/icons/24/chevron-right.svg';
@@ -15,7 +16,12 @@ function Slider({
   data, count, slider, windowWidth,
 }: SliderProps): JSX.Element {
   const [firstCardNumber, setfirstCardNumber] = useState<number>(0);
-
+  
+  const mobileSlider: CSS.Properties = {};
+  if (windowWidth <= 768) {
+    mobileSlider.left = `${sliderHandler()}px`;
+  }
+  
   function increment() {
     if (firstCardNumber > 0) {
       setfirstCardNumber((prev) => prev - 1);
@@ -37,7 +43,7 @@ function Slider({
   const generateItemsFromCount = useCallback(() => new Array(count).fill('').map((_, i: number) => firstCardNumber + i), [firstCardNumber]);
 
   return (
-    <div className="slider" style={{ left: `${sliderHandler()}px` }}>
+    <div className="slider" style={mobileSlider}>
       <button onClick={() => increment()} type="button">
         <img className="slider__left-arrow" src={leftArrow} alt="left arrow" />
       </button>
