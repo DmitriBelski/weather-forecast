@@ -7,9 +7,13 @@ import { IForecast } from '../../App';
 type SliderProps = {
   data: IForecast[]
   count: number
+  slider: number
+  windowWidth: number
 }
 
-function Slider({ data, count }: SliderProps): JSX.Element {
+function Slider({
+  data, count, slider, windowWidth,
+}: SliderProps): JSX.Element {
   const [firstCardNumber, setfirstCardNumber] = useState<number>(0);
 
   function increment() {
@@ -24,10 +28,16 @@ function Slider({ data, count }: SliderProps): JSX.Element {
     }
   }
 
+  function sliderHandler() {
+    const start = 0.074 * windowWidth;
+    const fullLenght = 1278 - 0.86 * windowWidth + 2 * 0.074 * windowWidth;
+    return start - 0.01 * slider * fullLenght;
+  }
+
   const generateItemsFromCount = useCallback(() => new Array(count).fill('').map((_, i: number) => firstCardNumber + i), [firstCardNumber]);
 
   return (
-    <div className="slider">
+    <div className="slider" style={{ left: `${sliderHandler()}px` }}>
       <button onClick={() => increment()} type="button">
         <img className="slider__left-arrow" src={leftArrow} alt="left arrow" />
       </button>

@@ -35,6 +35,8 @@ function App(): JSX.Element {
   const [inpastCity, setInpastCity] = useState<string>('');
   const [inpastDate, setInpastDate] = useState<string>('');
   const [rawInpastForecast, setRawInpastForecast] = useState<any>({});
+  const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [sliderValue, setSliderValue] = useState<number>(0);
 
   const [dailyForecast, setDailyForecast] = useState<IForecast[]>([]);
   const [inpastForecast, setInpastForecast] = useState<IForecast>();
@@ -64,7 +66,21 @@ function App(): JSX.Element {
     const citiesArray: ISelectItem[] = [];
     cities.map((item: ICity) => citiesArray.push({ id: item.id, item: item.name }));
     setCityNames(citiesArray);
+
+    setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  const handleSliderChange = (e) => {
+    setSliderValue(e.target.value);
+  };
 
   useEffect(() => {
     const city = cities.find((item) => item.name === dailyCity);
@@ -141,8 +157,9 @@ function App(): JSX.Element {
           <div style={{ marginBottom: '54px' }}>
             <Select initValue="Select city" items={cityNames} setter={setDailyCity} />
           </div>
-          { dailyForecast.length ? <Slider data={dailyForecast} count={3} /> : <Placeholder message="" /> }
-          <input className="input-range" type="range" />
+          { dailyForecast.length ? <Slider windowWidth={windowWidth} slider={sliderValue} data={dailyForecast} count={windowWidth <= 768 ? 7 : 3} /> : <Placeholder message="" /> }
+          { dailyForecast.length ? <input onChange={handleSliderChange} className="input-range" type="range" /> : <></> }
+
         </div>
 
         <div className="container">
