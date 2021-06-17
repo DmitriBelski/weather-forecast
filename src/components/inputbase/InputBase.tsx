@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 type CallbackFunction = () => void;
 
 type InputBaseProps = {
+  keyEvent(key: string): void,
   onRef(callback: CallbackFunction): void,
   value: string,
   open: boolean,
@@ -13,7 +14,7 @@ type InputBaseProps = {
 }
 
 function InputBase({
-  value, icon, children, open, onRef, extOpenhandler, changeInput,
+  keyEvent, value, icon, children, open, onRef, extOpenhandler, changeInput,
 }: InputBaseProps): JSX.Element {
   const [opened, setOpened] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -39,9 +40,13 @@ function InputBase({
     return setOpened(true);
   }
 
+  function KeyHandler(e: React.KeyboardEvent) {
+    keyEvent(e.key);
+  }
+
   return (
     <div className="inputbase">
-      <div className={`inputbase__wrapper body inputbase__wrapper--${opened ? 'open' : ''}`} onClick={clickHandler} aria-hidden="true">
+      <div className={`inputbase__wrapper body inputbase__wrapper--${opened ? 'open' : ''}`} onClick={clickHandler} onKeyDown={KeyHandler} aria-hidden="true">
         <input type="text" className="inputbase__value body-font" ref={inputRef} value={value} onChange={(event) => changeInput(event.target.value)} />
         {icon(opened)}
       </div>

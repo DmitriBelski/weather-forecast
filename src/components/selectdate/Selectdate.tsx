@@ -111,12 +111,17 @@ function Selectdate({ setDate }: SelectdateProps): JSX.Element {
     setGendays(generatedDays);
   }, [days, monthNumber]);
 
+  function inputKeyEvent(key: string) {
+    // console.log(key);
+  }
+
   return (
     <OutsideClicker outClick={() => (typeof inputBaseRef?.current === 'function') && inputBaseRef?.current()}>
       <InputBase
         onRef={(closeInputBase) => {
           inputBaseRef.current = closeInputBase;
         }}
+        keyEvent={inputKeyEvent}
         value={value}
         open={opened}
         extOpenhandler={setOpened}
@@ -126,9 +131,9 @@ function Selectdate({ setDate }: SelectdateProps): JSX.Element {
         )}
       >
         <div className="selectdate__dropdown">
-          <Scrollpicker items={gendays} picked={(v) => setDay(parseInt(v, 10))} />
-          <Scrollpicker items={months} picked={setMonth} />
-          <Scrollpicker items={years} picked={(v) => setYear(parseInt(v, 10))} />
+          <Scrollpicker items={gendays} picked={(v) => setDay(parseInt(v, 10))} selectedId={0} />
+          <Scrollpicker items={months} picked={setMonth} selectedId={0} />
+          <Scrollpicker items={years} picked={(v) => setYear(parseInt(v, 10))} selectedId={0} />
         </div>
       </InputBase>
     </OutsideClicker>
