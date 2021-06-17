@@ -1,7 +1,8 @@
 import React, {
-  useState, useEffect, useMemo,
+  useState, useEffect, useMemo, useRef,
 } from 'react';
 import { ISelectItem } from '../../App';
+import OutsideClicker from '../outsideclicker/Outsideclicker';
 import Scrollpicker from '../scrollpicker/Scrollpicker';
 import InputBase from '../inputbase/InputBase';
 import CalendarIcon from '../calendaricon/Calendaricon';
@@ -12,6 +13,7 @@ type SelectdateProps = {
 
 function Selectdate({ setDate }: SelectdateProps): JSX.Element {
   const firstYear = useMemo<number>(() => 1970, []);
+  const inputBaseRef = useRef<React.ReactNode>(null);
 
   const [gendays, setGendays] = useState<ISelectItem[]>([]);
 
@@ -110,21 +112,26 @@ function Selectdate({ setDate }: SelectdateProps): JSX.Element {
   }, [days, monthNumber]);
 
   return (
-    <InputBase
-      value={value}
-      open={opened}
-      extOpenhandler={setOpened}
-      changeInput={setInputValue}
-      icon={(inputopened) => (
-        <CalendarIcon opened={inputopened} />
-      )}
-    >
-      <div className="selectdate__dropdown">
-        <Scrollpicker items={gendays} picked={(v) => setDay(parseInt(v, 10))} />
-        <Scrollpicker items={months} picked={setMonth} />
-        <Scrollpicker items={years} picked={(v) => setYear(parseInt(v, 10))} />
-      </div>
-    </InputBase>
+    <OutsideClicker outClick={() => (typeof inputBaseRef?.current === 'function') && inputBaseRef?.current()}>
+      <InputBase
+        onRef={(closeInputBase) => {
+          inputBaseRef.current = closeInputBase;
+        }}
+        value={value}
+        open={opened}
+        extOpenhandler={setOpened}
+        changeInput={setInputValue}
+        icon={(inputopened) => (
+          <CalendarIcon opened={inputopened} />
+        )}
+      >
+        <div className="selectdate__dropdown">
+          <Scrollpicker items={gendays} picked={(v) => setDay(parseInt(v, 10))} />
+          <Scrollpicker items={months} picked={setMonth} />
+          <Scrollpicker items={years} picked={(v) => setYear(parseInt(v, 10))} />
+        </div>
+      </InputBase>
+    </OutsideClicker>
   );
 }
 

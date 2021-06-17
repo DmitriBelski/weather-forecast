@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+type CallbackFunction = () => void;
+
 type InputBaseProps = {
+  onRef(callback: CallbackFunction): void,
   value: string,
   open: boolean,
   icon(opened: boolean): JSX.Element,
@@ -10,13 +13,14 @@ type InputBaseProps = {
 }
 
 function InputBase({
-  value, icon, children, open, extOpenhandler, changeInput,
+  value, icon, children, open, onRef, extOpenhandler, changeInput,
 }: InputBaseProps): JSX.Element {
   const [opened, setOpened] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setOpened(open);
+    onRef(() => setOpened(false));
   }, []);
 
   useEffect(() => {
