@@ -3,7 +3,7 @@ import Title from './components/title/Title';
 import Placeholder from './components/placeholder/Placeholder';
 import Card from './components/card/Card';
 import Slider from './components/slider/Slider';
-import Select from './components/select/Select';
+import Selectcity from './components/selectcity/Selectcity';
 import Selectdate from './components/selectdate/Selectdate';
 
 interface ICity {
@@ -155,7 +155,7 @@ function App(): JSX.Element {
         <div className="container container-top">
           <h1 className="h1-font" style={{ marginBottom: '32px' }}>7 Days Forecast</h1>
           <div style={{ marginBottom: '54px' }}>
-            <Select initValue="Select city" items={cityNames} setter={setDailyCity} />
+            <Selectcity setCity={setDailyCity} items={cityNames} />
           </div>
           { dailyForecast.length ? <Slider windowWidth={windowWidth} slider={sliderValue} data={dailyForecast} count={windowWidth <= 768 ? 7 : 3} /> : <Placeholder message="" /> }
           { dailyForecast.length ? <input onChange={handleSliderChange} className="input-range" type="range" /> : <></> }
@@ -167,8 +167,8 @@ function App(): JSX.Element {
             Forecast for a Date in the Past
           </h1>
           <div className="selectwrapper">
-            <Select initValue="Select city" items={cityNames} setter={setInpastCity} />
-            <Selectdate setter={setInpastDate} />
+            <Selectcity setCity={setInpastCity} items={cityNames} />
+            <Selectdate setDate={setInpastDate} />
           </div>
           { inpastForecast ? <Card size="big" data={inpastForecast} /> : <Placeholder message={inpastForecastMessage} /> }
         </div>
@@ -180,3 +180,7 @@ function App(): JSX.Element {
 }
 
 export default App;
+
+// function getHttp(url: string, callback: Function) {
+//   fetch(url).then((res) => res.json()).then((data) => callback(data));
+// }

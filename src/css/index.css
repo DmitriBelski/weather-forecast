@@ -7,9 +7,11 @@
 @import url('../components/placeholder/placeholder.css');
 @import url('../components/card/card.css');
 @import url('../components/slider/slider.css');
-@import url('../components/scrollpicker/scrollpicker.css');
-@import url('../components/select/select.css');
 @import url('../components/selectdate/selectdate.css');
+@import url('../components/inputbase/inputbase.css');
+@import url('../components/arrowicon/arrowicon.css');
+@import url('../components/calendaricon/calendaricon.css');
+@import url('../components/scrollpicker/scrollpicker.css');
 
 body {
   background: url(../images/background/Up-1440.svg) top no-repeat,

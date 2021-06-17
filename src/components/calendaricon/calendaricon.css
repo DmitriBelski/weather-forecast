@@ -1,0 +1,16 @@
+.calendaricon {
+  height: 20px;
+  flex: 0 0 20px;
+  background-color: var(--secondary);
+  opacity: 0.4;
+  -webkit-mask: url(/src/images/icons/16/calendar.svg) no-repeat center;
+  mask: url(/src/images/icons/16/calendar.svg) no-repeat center;
+}
+
+.calendaricon:hover {
+  opacity: 0.6;
+}
+
+.calendaricon--open {
+  opacity: 1;
+}

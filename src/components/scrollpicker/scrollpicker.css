@@ -55,3 +55,8 @@
   cursor: pointer;
   transition: 0.15s background-color ease-in;
 }
+
+.scrollpicker__item--selected {
+  background: var(--secondary-20);
+  transition: 0.15s background-color ease-in;
+}
