@@ -1,0 +1,15 @@
+.arrowicon {
+  height: 20px;
+  flex: 0 0 20px;
+  background-color: var(--secondary);
+}
+
+.arrowicon--bottom {
+  -webkit-mask: url(/src/images/icons/16/chevron-bottom.svg) no-repeat center;
+  mask: url(/src/images/icons/16/chevron-bottom.svg) no-repeat center;
+}
+
+.arrowicon--top {
+  -webkit-mask: url(/src/images/icons/16/chevron-top.svg) no-repeat center;
+  mask: url(/src/images/icons/16/chevron-top.svg) no-repeat center;
+}

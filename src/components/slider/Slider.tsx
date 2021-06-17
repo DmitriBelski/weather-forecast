@@ -16,12 +16,12 @@ function Slider({
   data, count, slider, windowWidth,
 }: SliderProps): JSX.Element {
   const [firstCardNumber, setfirstCardNumber] = useState<number>(0);
-  
+
   const mobileSlider: CSS.Properties = {};
   if (windowWidth <= 768) {
     mobileSlider.left = `${sliderHandler()}px`;
   }
-  
+
   function increment() {
     if (firstCardNumber > 0) {
       setfirstCardNumber((prev) => prev - 1);

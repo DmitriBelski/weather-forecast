@@ -1,16 +1,19 @@
 import React, {
-  useState, useCallback, useEffect, useMemo,
+  useState, useEffect, useMemo,
 } from 'react';
-import { Condition } from '../../functions';
 import { ISelectItem } from '../../App';
 import Scrollpicker from '../scrollpicker/Scrollpicker';
+import InputBase from '../inputbase/InputBase';
+import CalendarIcon from '../calendaricon/Calendaricon';
 
 type SelectdateProps = {
-  setter(value: any): void
+  setDate(city: string): void
 }
 
-function Selectdate({ setter }: SelectdateProps): JSX.Element {
+function Selectdate({ setDate }: SelectdateProps): JSX.Element {
   const firstYear = useMemo<number>(() => 1970, []);
+
+  const [gendays, setGendays] = useState<ISelectItem[]>([]);
 
   const months = useMemo<ISelectItem[]>(() => [
     { id: 1, item: 'Jan' },
@@ -31,14 +34,14 @@ function Selectdate({ setter }: SelectdateProps): JSX.Element {
     .fill('').map((_, i: number) => ({ id: i, item: firstYear + i })), []);
 
   const [value, setValue] = useState<string>('Select date');
+  const [inputValue, setInputValue] = useState<string>('Select date');
+  const [opened, setOpened] = useState<boolean>(false);
   const [days, setDays] = useState<number[]>([31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]);
   const [day, setDay] = useState<number>(0);
   const [month, setMonth] = useState<string>('');
   const [monthNumber, setMonthNumber] = useState<number>(1);
   const [year, setYear] = useState<number>(0);
   const [fulldate, setFulldate] = useState<string>('');
-  const [opened, setOpened] = useState<boolean>(false);
-  const [hovered, setHovered] = useState<boolean>(false);
 
   function leapYear(yr: number): boolean {
     return ((yr % 4 === 0) && (yr % 100 !== 0)) || (yr % 400 === 0);
@@ -77,9 +80,12 @@ function Selectdate({ setter }: SelectdateProps): JSX.Element {
   }, [year]);
 
   useEffect(() => {
-    if (day || month || year) {
-      setValue(`${day || '..'}/${monthNumber || '..'}/${year || '....'}`);
+    if (value !== 'Select date') {
+      setOpened(!fulldate);
     }
+  }, [value]);
+
+  useEffect(() => {
     if (day && month && year) {
       const maxDayNumber = days[monthNumber - 1];
       if (day > maxDayNumber) {
@@ -88,39 +94,37 @@ function Selectdate({ setter }: SelectdateProps): JSX.Element {
         setFulldate(`${day}/${monthNumber}/${year}`);
       }
     }
+    if (day || month || year) {
+      setValue(`${day || '..'}/${monthNumber || '..'}/${year || '....'}`);
+    }
   }, [day, monthNumber, days]);
 
   useEffect(() => {
-    setter(fulldate);
+    setDate(fulldate);
   }, [fulldate]);
 
-  const generateDays = useCallback(() => new Array(days[(monthNumber || 1) - 1])
-    .fill('').map((_, i: number) => ({ id: i, item: i + 1 })), [days, monthNumber]);
-
-  function HoverHandler() {
-    return setHovered((prev) => !prev);
-  }
-
-  function OpenHandler() {
-    setHovered(true);
-    return setOpened((prev) => !prev);
-  }
+  useEffect(() => {
+    const generatedDays = new Array(days[(monthNumber || 1) - 1])
+      .fill('').map((_, i: number) => ({ id: i, item: i + 1 }));
+    setGendays(generatedDays);
+  }, [days, monthNumber]);
 
   return (
-    <div className="selectdate">
-      <div className={`selectdate__input body-font ${Condition(opened, 'selectdate__input--open', Condition(hovered, 'selectdate__input--hover', ''))}`} onMouseOver={HoverHandler} onMouseOut={HoverHandler} onFocus={HoverHandler} onBlur={HoverHandler}>
-        <span className="body-font">{ value }</span>
-        <button type="button" onClick={OpenHandler} onKeyDown={OpenHandler} className={`selectdate__calendar ${Condition(opened, 'selectdate__calendar--open', Condition(hovered, 'selectdate__calendar--hover', ''))}`}>
-          <span role="navigation" />
-        </button>
+    <InputBase
+      value={value}
+      open={opened}
+      extOpenhandler={setOpened}
+      changeInput={setInputValue}
+      icon={(inputopened) => (
+        <CalendarIcon opened={inputopened} />
+      )}
+    >
+      <div className="selectdate__dropdown">
+        <Scrollpicker items={gendays} picked={(v) => setDay(parseInt(v, 10))} />
+        <Scrollpicker items={months} picked={setMonth} />
+        <Scrollpicker items={years} picked={(v) => setYear(parseInt(v, 10))} />
       </div>
-
-      <div className={`selectdate__dropdown ${opened ? 'selectdate__dropdown--open' : ''}`}>
-        <Scrollpicker getItems={generateDays} setter={setDay} />
-        <Scrollpicker itemsArr={months} setter={setMonth} />
-        <Scrollpicker itemsArr={years} setter={setYear} />
-      </div>
-    </div>
+    </InputBase>
   );
 }
 

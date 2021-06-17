@@ -1,67 +1,10 @@
-.selectdate {
-  width: 252px;
-  position: relative;
-  flex: 0 0 252px;
-}
-
-.selectdate__input {
-  padding: 12px 16px;
-  height: 48px;
-  margin-bottom: 24px;
-  background: var(--secondary-06);
-  color: var(--secondary);
-  border: 2px solid var(--secondary-20);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  justify-content: space-between;
-}
-
-.selectdate__input--open {
-  border: 2px solid var(--accent);
-}
-
-.selectdate__input--hover {
-  border: 2px solid var(--secondary);
-}
-
-.selectdate__input span {
-  flex: 0 0 auto;
-}
-
-.selectdate__calendar {
-  height: 20px;
-  flex: 0 0 20px;
-  background-color: var(--secondary);
-  opacity: 0.4;
-  -webkit-mask: url(/src/images/icons/16/calendar.svg) no-repeat center;
-  mask: url(/src/images/icons/16/calendar.svg) no-repeat center;
-}
-
-.selectdate__calendar--hover {
-  opacity: 0.6;
-}
-
-.selectdate__calendar--open {
-  opacity: 1;
-}
-
 .selectdate__dropdown {
-  display: none;
-  position: absolute;
-
+  display: flex;
   justify-content: space-between;
-  z-index: 100;
   width: 252px;
   max-height: 160px;
-  top: 60px;
   background-color: var(--base-weak);
   padding: 7px;
   border-radius: 8px;
   box-shadow: 0px 2px 4px rgba(4, 5, 73, 0.16), 14px 14px 20px rgba(5, 6, 114, 0.08);
-}
-
-.selectdate__dropdown--open {
-  display: flex;
 }
