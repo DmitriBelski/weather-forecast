@@ -3,7 +3,7 @@ import React from 'react';
 type ArrowIconProps = {
   opened: boolean,
   onClick(): void,
-}
+};
 
 function ArrowIcon({ opened, onClick }: ArrowIconProps): JSX.Element {
   return (

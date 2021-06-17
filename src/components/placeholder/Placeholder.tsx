@@ -3,7 +3,7 @@ import img from '../../images/placeholder/Academy-Weather-bg160.svg';
 
 type PlaceholderProps = {
   message: string
-}
+};
 
 function Placeholder({ message }: PlaceholderProps): JSX.Element {
   return (

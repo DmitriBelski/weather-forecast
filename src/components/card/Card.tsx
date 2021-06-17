@@ -1,11 +1,11 @@
 import React from 'react';
 import CSS from 'csstype';
-import { IForecast } from '../../App';
+import { IForecast } from '../../utils/interfaces';
 
 type CardProps = {
   size: string
   data: IForecast
-}
+};
 
 function Card({ size, data }: CardProps): JSX.Element {
   const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
@@ -25,8 +25,7 @@ function Card({ size, data }: CardProps): JSX.Element {
   }
 
   function getImg(icon: string) {
-    const img = require(`../../images/weather-icons/${icon || '01d'}.png`).default;
-    return img;
+    return `/weather-icons/${icon || '01d'}.png`;
   }
 
   return (

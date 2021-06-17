@@ -11,7 +11,7 @@ type InputBaseProps = {
   children: React.ReactNode,
   extOpenhandler(value: boolean): void,
   changeInput(value: string): void,
-}
+};
 
 function InputBase({
   keyEvent, value, icon, children, open, onRef, extOpenhandler, changeInput,
@@ -24,13 +24,13 @@ function InputBase({
     onRef(() => setOpened(false));
   }, []);
 
+  const focus = () => inputRef.current?.focus();
+  const blur = () => inputRef.current?.blur();
+
   useEffect(() => {
     extOpenhandler(opened);
     return opened ? focus() : blur();
   }, [opened]);
-
-  const focus = () => inputRef.current?.focus();
-  const blur = () => inputRef.current?.blur();
 
   useEffect(() => {
     setOpened(open);

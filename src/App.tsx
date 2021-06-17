@@ -5,25 +5,13 @@ import Card from './components/card/Card';
 import Slider from './components/slider/Slider';
 import Selectcity from './components/selectcity/Selectcity';
 import Selectdate from './components/selectdate/Selectdate';
+import { IForecast, ISelectItem } from './utils/interfaces';
 
 interface ICity {
   id: number;
   name: string;
   lat: number;
   lon: number;
-}
-
-export interface ISelectItem {
-  id: number;
-  item: any;
-}
-
-export interface IForecast {
-  day: number;
-  month: number;
-  year: number;
-  temp: number;
-  icon: string;
 }
 
 function App(): JSX.Element {
@@ -62,6 +50,10 @@ function App(): JSX.Element {
   ],
   []);
 
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
   useEffect(() => {
     const citiesArray: ISelectItem[] = [];
     cities.map((item: ICity) => citiesArray.push({ id: item.id, item: item.name }));
@@ -73,10 +65,6 @@ function App(): JSX.Element {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
 
   const handleSliderChange = (e) => {
     setSliderValue(e.target.value);
@@ -110,18 +98,6 @@ function App(): JSX.Element {
     }
   }, [rawDailyForecast]);
 
-  useEffect(() => {
-    if (inpastCity && inpastDate) {
-      const city = cities.find((item) => item.name === inpastCity);
-      const dateStringArr: string[] = inpastDate.split('/');
-      const dateArr: number[] = dateStringArr.map((item: string) => Number.parseInt(item, 10));
-      const unixTimestamp = Math.floor((new Date(dateArr[2], dateArr[1] - 1, dateArr[0])).getTime() / 1000);
-      fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=${city?.lat}&lon=${city?.lon}&units=metric&dt=${unixTimestamp}&appid=${key}`)
-        .then((response) => response.json())
-        .then((json) => fetchRequestHandler(json));
-    }
-  }, [inpastCity, inpastDate]);
-
   function fetchRequestHandler(req) {
     if (req.cod === '400') {
       setInpastForecastMessage(req.message);
@@ -130,6 +106,19 @@ function App(): JSX.Element {
       setRawInpastForecast(req);
     }
   }
+
+  useEffect(() => {
+    if (inpastCity && inpastDate) {
+      const city = cities.find((item) => item.name === inpastCity);
+      const dateStringArr: string[] = inpastDate.split('/');
+      const dateArr: number[] = dateStringArr.map((item: string) => Number.parseInt(item, 10));
+      const unixTimestamp = Math.floor((new Date(dateArr[2], dateArr[1] - 1, dateArr[0]))
+        .getTime() / 1000);
+      fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=${city?.lat}&lon=${city?.lon}&units=metric&dt=${unixTimestamp}&appid=${key}`)
+        .then((response) => response.json())
+        .then((json) => fetchRequestHandler(json));
+    }
+  }, [inpastCity, inpastDate]);
 
   useEffect(() => {
     if (rawInpastForecast.current) {

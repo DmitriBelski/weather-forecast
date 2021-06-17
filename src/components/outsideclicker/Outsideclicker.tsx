@@ -8,7 +8,7 @@ const outsideClicker: CSS.Properties = {
 type OutsidealerterProps = {
   children: React.ReactNode,
   outClick(): React.ReactNode,
-}
+};
 
 function useOutsideClicker(ref: RefObject<HTMLDivElement>, outClick) {
   useEffect(() => {

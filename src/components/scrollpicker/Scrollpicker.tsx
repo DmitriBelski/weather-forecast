@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from 'react';
-import { ISelectItem } from '../../App';
+import { ISelectItem } from '../../utils/interfaces';
 
 type ScrollpickerProps = {
   items: ISelectItem[],
   picked(value: string): void,
   selectedId: number,
-}
+};
 
 function Scrollpicker({ items, picked, selectedId }: ScrollpickerProps): JSX.Element {
   /* eslint-disable  @typescript-eslint/no-array-constructor */

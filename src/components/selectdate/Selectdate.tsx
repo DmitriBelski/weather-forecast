@@ -1,15 +1,15 @@
 import React, {
   useState, useEffect, useMemo, useRef,
 } from 'react';
-import { ISelectItem } from '../../App';
 import OutsideClicker from '../outsideclicker/Outsideclicker';
 import Scrollpicker from '../scrollpicker/Scrollpicker';
 import InputBase from '../inputbase/InputBase';
 import CalendarIcon from '../calendaricon/Calendaricon';
+import { ISelectItem } from '../../utils/interfaces';
 
 type SelectdateProps = {
   setDate(city: string): void
-}
+};
 
 function Selectdate({ setDate }: SelectdateProps): JSX.Element {
   const firstYear = useMemo<number>(() => 1970, []);
@@ -44,6 +44,10 @@ function Selectdate({ setDate }: SelectdateProps): JSX.Element {
   const [monthNumber, setMonthNumber] = useState<number>(1);
   const [year, setYear] = useState<number>(0);
   const [fulldate, setFulldate] = useState<string>('');
+
+  useEffect(() => {
+    console.log(inputValue);
+  }, [inputValue]);
 
   function leapYear(yr: number): boolean {
     return ((yr % 4 === 0) && (yr % 100 !== 0)) || (yr % 400 === 0);
@@ -112,7 +116,7 @@ function Selectdate({ setDate }: SelectdateProps): JSX.Element {
   }, [days, monthNumber]);
 
   function inputKeyEvent(key: string) {
-    // console.log(key);
+    console.log(key);
   }
 
   return (

@@ -3,12 +3,12 @@ import OutsideClicker from '../outsideclicker/Outsideclicker';
 import InputBase from '../inputbase/InputBase';
 import ArrowIcon from '../arrowicon/Arrowicon';
 import Scrollpicker from '../scrollpicker/Scrollpicker';
-import { ISelectItem } from '../../App';
+import { ISelectItem } from '../../utils/interfaces';
 
 type SelectcityProps = {
   items: ISelectItem[],
   setCity(city: string): void
-}
+};
 
 function Selectcity({ items, setCity }: SelectcityProps): JSX.Element {
   const [value, setValue] = useState<string>('Select city');
@@ -20,6 +20,19 @@ function Selectcity({ items, setCity }: SelectcityProps): JSX.Element {
   useEffect(() => {
     setCity(value);
   }, [value]);
+
+  function getCloseItemId(targetValue: string): void {
+    if (targetValue) {
+      const maxIndex = items.map((i) => i.item.toLowerCase().indexOf(targetValue.toLowerCase()))
+        .map((i) => (i === -1 ? items.length : i))
+        .reduce((acc, current, index, arr) => (current < arr[acc] ? index : acc), 0);
+      if (maxIndex < items.length) {
+        setCloseItemId(items[maxIndex].id);
+      } else {
+        setCloseItemId(NaN);
+      }
+    }
+  }
 
   useEffect(() => {
     setValue(inputValue);
@@ -35,19 +48,6 @@ function Selectcity({ items, setCity }: SelectcityProps): JSX.Element {
   function pickHandler(pickedvalue: string) {
     setValue(pickedvalue);
     setOpened(false);
-  }
-
-  function getCloseItemId(targetValue: string): void {
-    if (targetValue) {
-      const maxIndex = items.map((i) => i.item.toLowerCase().indexOf(targetValue.toLowerCase()))
-        .map((i) => (i === -1 ? items.length : i))
-        .reduce((acc, current, index, arr) => (current < arr[acc] ? index : acc), 0);
-      if (maxIndex < items.length) {
-        setCloseItemId(items[maxIndex].id);
-      } else {
-        setCloseItemId(NaN);
-      }
-    }
   }
 
   function itemIndexById(id: number): number {
